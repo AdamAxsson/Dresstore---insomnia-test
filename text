@@ -1,0 +1,33 @@
+Rapport - Frontend Server
+
+1. Get request
+    - Första get req vi kan göra "/" ger oss en HTML sida med befintliga produkter.
+    - Get request med input "/api/products" ger tillbaka produkterna i JSON format samt skriver ut: Namn, Modell, Pris, Kvantitet och Kategori.
+    - Get request för att få ut produkter via namn går genom input "/api/products?Name="??" ", Type sensitive då jag inte använder lowercase funktion.
+    - Du kan även get requesta ID som databasen mongoDb ger ut, Detta skrivs ut "/api/product/:id "
+
+    Alla dessa ger status(200) som är en "succesful response"
+
+    Angiver du fel kommer du mötas av status(404 och 500) som är "Client error" och "Server error"
+
+
+2. Post request
+    - Genom att göra en post request, ställ dig i post och sedan input "/api/products", till följd av en JSON body som blir godkänd av följande krav: Name: "", Model: "", Price: "", Quantity: "", Category: "".
+    Därigenom får du status(godkänd) och följande post sparas i databasen (MongoDB)
+
+    Annars möts du av error status(400)
+
+3. Put request
+    - För att ändra en befintlig produkt söker du upp produkten genom dess id via input "/api/products/:id",
+    sedan kan du skriva i JSON body format vad som önskas att ändras. 
+    Krav = måste innehålla: Name, Model, Price, Quantity eller Category
+    Produkt ändras och du får status(200)
+
+    Annars blir du mött av not found(404) eller status(400) bad request
+
+4. Delete request
+    -Vi har två delete requests, ena genom id input "/api/products/:id" där du kan deleta valfri produkt med hjälp av dess id.
+    Andra genom input "/api/products", då raderar vi alla produkter.
+    Dessa två ger godkända status responses(200)
+
+    Följer du inte kraven får du not found (404)
